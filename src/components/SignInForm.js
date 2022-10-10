@@ -5,6 +5,7 @@ import UserContext from "../context/UserContext";
 import { useNavigate } from "react-router-dom";
 import { checkToken } from "../utils/validateToken";
 import Input from "../shared/Input";
+import Spinner from "../shared/Spinner";
 
 export default function SignIn() {
 
@@ -25,8 +26,10 @@ export default function SignIn() {
         if (response) {
             setToken(response.token);
             localStorage.setItem("token", response.token);
-            checkToken(navigate, setToken)
-            // navigate("/feed");
+            localStorage.setItem("userId", response.userId);
+            const page = "feed";
+            checkToken(navigate, setToken, page)
+            navigate("/feed");
         } else {
             setLoading(false);
         }
@@ -37,7 +40,7 @@ export default function SignIn() {
             <Form onSubmit={ login }>
                 <Input type="text" placeholder="seu username ou email" disabled={ loading } value={ username } onChange={ (e) => setUsername(e.target.value) } />
                 <Input type="password" placeholder="senha" disabled={ loading } value={ password } onChange={ (e) => setPassword(e.target.value) } />
-                <Button type="submit" disabled={ loading }>entrar</Button>
+                {loading ? (<Spinner/>) : <Button type="submit" disabled={ loading }>entrar</Button>}
             </Form>
         </>
     );

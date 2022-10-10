@@ -20,9 +20,9 @@ export async function loginUser(body) {
         });
 }
 
-export async function accessFeed(config) {
+export async function accessFeed(auth) {
     return axios
-        .get('http://localhost:5000/feed', config)
+        .get('http://localhost:5000/feed', auth)
         .then((res) => {
             return res.data;
         })

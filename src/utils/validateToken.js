@@ -2,20 +2,18 @@ import { accessFeed } from "../services/authService";
 
 export async function checkToken(navigate, setToken, page) {
     const tokenStorage = localStorage.getItem("token");
-    localStorage.removeItem("image");
+    localStorage.removeItem("username");
 
     if (tokenStorage) {
-        const body = null;
-        const config = {
+        const auth = {
             headers: {
                 Authorization: `Bearer ${tokenStorage}`
             }
         }
-        const response = await accessFeed(config);
+        const response = await accessFeed(auth);
 
         if (response) {
             setToken(tokenStorage);
-            localStorage.setItem("image", response.image);
             navigate(`/${page}`);
         } else {
             localStorage.removeItem("token");

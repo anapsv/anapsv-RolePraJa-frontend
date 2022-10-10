@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import HeaderFeed from "../components/HeaderFeed";
 import FooterFeed from '../components/FooterFeed';
-import MyComponent from "../components/Places";
+import Places from "../components/Places";
 import FavoritePlaces from "../components/Favorites";
 import NewPost from "../components/NewPostForm";
 import { useState } from "react";
@@ -18,10 +18,6 @@ export default function Feed() {
     const [buttonAddPost, setButtonAddPost] = useState(false);
     const [showPosts, setShowPosts] = useState(false);
     const navigate = useNavigate();
-
-    const [coordinates, setCoordinates] = useState({});
-    const [bounds, setBounds] = useState(null);
-
 
     function updateNewPostState() {
         setNewPost(!newPost);
@@ -94,6 +90,7 @@ export default function Feed() {
         if (newPost === true) {
             setNewPost(false);
         }
+        navigate('/feed');
     }
 
     return (
@@ -106,7 +103,7 @@ export default function Feed() {
             </ButtonContainer>
             <HeaderFeed />
             <Container>
-                { showLocations ? <MyComponent setCoordinates={ setCoordinates } setBounds={ setBounds } coordinates={ coordinates } display={ true } /> : null }
+                { showLocations ? <Places display={ true } /> : null }
                 { showFavorites ? <FavoritePlaces display={ true } /> : null }
                 { newPost ? <NewPost display={ true } /> : null }
             </Container>

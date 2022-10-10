@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createUser } from "../services/authService";
 import Input from "../shared/Input";
+import Spinner from "../shared/Spinner";
 
 export default function SignUp() {
 
@@ -31,11 +32,11 @@ export default function SignUp() {
     return (
         <>
             <Form onSubmit={ registerUser }>
-                <Input type="text" placeholder="escolha um username bem legal" disabled={ loading } value={ username } onChange={ (e) => setUsername(e.target.value) } />
+                <Input type="text" placeholder="escolha um username beeeem legal" disabled={ loading } value={ username } onChange={ (e) => setUsername(e.target.value) } />
                 <Input type="email" placeholder="email" disabled={ loading } value={ email } onChange={ (e) => setEmail(e.target.value) } />
                 <Input type="password" placeholder="senha" disabled={ loading } value={ password } onChange={ (e) => setPassword(e.target.value) } />
                 <Input type="password" placeholder="confirme sua senha" value={ passwordConfirmation } onChange={ (e) => setPasswordConfirmation(e.target.value) } />
-                <Button type="submit" disabled={ loading }>cadastrar</Button>
+                { loading ? (<Spinner />) : <Button type="submit" disabled={ loading }>cadastrar</Button> }
             </Form>
         </>
     );
@@ -47,6 +48,10 @@ const Form = styled.form`
     justify-content: center;
     align-items: center;
     width: 100%;
+
+    @media (max-width: 361px) {
+        margin-top: 33px;
+    }
 `
 const Button = styled.button`
     width: 30%;

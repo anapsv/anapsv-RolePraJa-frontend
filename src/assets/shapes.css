@@ -41,6 +41,50 @@
     fill: #20EB7B66;
 }
 
+.custom-shape-divider-top-1664867463 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-top-1664867463 svg {
+    position: relative;
+    display: block;
+    width: calc(153% + 1.3px);
+    height: 68px;
+    transform: rotateY(180deg);
+}
+
+.custom-shape-divider-top-1664867463 .shape-fill {
+    fill: #F08B08;
+}
+
+.custom-shape-divider-bottom-1664868258 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1664868258 svg {
+    position: relative;
+    display: block;
+    width: calc(153% + 1.3px);
+    height: 68px;
+    transform: rotateY(180deg);
+}
+
+.custom-shape-divider-bottom-1664868258 .shape-fill {
+    fill: #F02308;
+}
+
+
 .lala {
-    color: #6363631c;
+    color: #5a5a5ad5;
 }
